@@ -67,19 +67,43 @@ let userInput = () => {
 };
 
 //main game, consists of 5 rounds, tie and error will be counted as one game
-let game = () => {
-  let win = 0,
-    loss = 0;
-  for (let i = 0; i < 5; i++) {
-    let gameState = playOneRound(userInput(), computerPlay());
-    console.log(gameState.message);
-    if (gameState.status === 0) loss++;
-    else if (gameState.status === 1) win++;
-  }
-  if (win > loss) return `You win! (${win}-${loss})`;
-  if (loss > win) return `You lose! (${win}-${loss}!)`;
-  return `It's a tie! (${win}-${loss})`;
-};
+// let game = () => {
+//   let win = 0,
+//     loss = 0;
+//   for (let i = 0; i < 5; i++) {
+//     let gameState = playOneRound(userInput(), computerPlay());
+//     console.log(gameState.message);
+//     if (gameState.status === 0) loss++;
+//     else if (gameState.status === 1) win++;
+//   }
+//   if (win > loss) return `You win! (${win}-${loss})`;
+//   if (loss > win) return `You lose! (${win}-${loss}!)`;
+//   return `It's a tie! (${win}-${loss})`;
+// };
 
-//print out the result
-console.log(game());
+// //print out the result
+// console.log(game());
+const selection = document.querySelectorAll(".choice");
+const score = document.querySelector(".score");
+const roundStatusText = document.querySelector(".status");
+const gameStatus = document.querySelector(".game-status h1");
+for (let choice of Array.from(selection)) {
+  choice.addEventListener("click", () => {
+    let gameState = playOneRound(
+      choice.getAttribute("data-choice"),
+      computerPlay()
+    );
+    roundStatusText.textContent = gameState.message;
+    if (gameState.status === 1) {
+      let currentScore = parseInt(score.textContent);
+      currentScore += 1;
+      if (currentScore >= 5) {
+        gameStatus.textContent = "YOU WIN!";
+        currentScore = 0;
+        score.textContent = "0";
+      } else {
+        score.textContent = currentScore.toString();
+      }
+    }
+  });
+}
