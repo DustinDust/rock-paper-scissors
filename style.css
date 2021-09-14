@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("http://fonts.cdnfonts.com/css/common-pixel");
+html {
+  font-family: "VT323", "Common Pixel", monospace;
+  font-size: 10px;
+}
+body {
+  background-color: #112031;
+}
+h1,
+h2,
+p {
+  margin: 0px;
+}
+
+.game-info {
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  color: #d4ecdd;
+  align-items: center;
+  background-color: #112031;
+}
+
+.score {
+  font-size: 5rem;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #112031;
+  color: #d4ecdd;
+}
+
+.choice-container {
+  margin-top: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  background-color: #112031;
+  color: #d4ecdd;
+}
+
+.game-decoration {
+  font-size: 2.5rem;
+  padding: 10vh;
+  padding-left: calc(15vw - 1px);
+  padding-right: calc(15vw - 1px);
+  border: #d4ecdd solid 1px;
+  background-color: #112031;
+  color: #d4ecdd;
+  display: flex;
+  justify-content: space-between;
+}
+.game-decoration p {
+  text-align: center;
+}
+
+.choice {
+  font-family: "VT323";
+  font-size: 3rem;
+  background-color: #112031;
+  padding: 1vmin;
+  color: #d4ecdd;
+  border: #d4ecdd 1px groove;
+  border-radius: 10px;
+}
+
+.choice:hover {
+  background-color: #345b63;
+  border-color: #ffb319;
+}
+
+.avatar-player,
+.avatar-computer {
+  border: #345b63 solid 1px;
+  border-radius: 5px;
+  width: calc(30vmin - 5px);
+  height: calc(30vmin - 5px);
+}
+
+.winner {
+  border: #ffb319 solid 5px;
+  width: 30vmin;
+  height: 30vmin;
+}
+
+.game-status h1 {
+  margin-top: 2vh;
+  font-size: 5rem;
+  color: #d4ecdd;
+  text-align: center;
+}

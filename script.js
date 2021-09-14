@@ -84,25 +84,50 @@ let userInput = () => {
 // //print out the result
 // console.log(game());
 const selection = document.querySelectorAll(".choice");
-const score = document.querySelector(".score");
-const roundStatusText = document.querySelector(".status");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+const roundStatus = document.querySelector(".round-status");
 const gameStatus = document.querySelector(".game-status h1");
+const player = document.querySelector(".avatar-player");
+const computer = document.querySelector(".avatar-computer");
 for (let choice of Array.from(selection)) {
   choice.addEventListener("click", () => {
     let gameState = playOneRound(
       choice.getAttribute("data-choice"),
       computerPlay()
     );
-    roundStatusText.textContent = gameState.message;
+    roundStatus.textContent = gameState.message;
+    setTimeout(() => {
+      roundStatus.textContent = "Select One to Start";
+    }, 1000);
+    let currentPlayerScore = parseInt(playerScore.textContent);
+    let currentComputerScore = parseInt(computerScore.textContent);
     if (gameState.status === 1) {
-      let currentScore = parseInt(score.textContent);
-      currentScore += 1;
-      if (currentScore >= 5) {
+      if (++currentPlayerScore >= 5) {
         gameStatus.textContent = "YOU WIN!";
-        currentScore = 0;
-        score.textContent = "0";
+        player.classList.add("winner");
+        setTimeout(() => {
+          gameStatus.textContent = "";
+          playerScore.textContent = "0";
+          computerScore.textContent = "0";
+          player.classList.remove("winner");
+        }, 2000);
       } else {
-        score.textContent = currentScore.toString();
+        playerScore.textContent = currentPlayerScore.toString();
+      }
+    }
+    if (gameState.status === 0) {
+      if (++currentComputerScore >= 5) {
+        gameStatus.textContent = "YOU LOSE";
+        computer.classList.add("winner");
+        setTimeout(() => {
+          gameStatus.textContent = "";
+          playerScore.textContent = "0";
+          computerScore.textContent = "0";
+          computer.classList.remove("winner");
+        }, 2000);
+      } else {
+        computerScore.textContent = currentComputerScore.toString();
       }
     }
   });

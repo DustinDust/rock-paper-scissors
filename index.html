@@ -4,13 +4,27 @@
     <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div>
-      <h1>Score:</h1>
-      <span class="score">0</span>
-      <h2 class="status"></h2>
+    <div class="game-info">
+      <h2 class="round-status">Pick One to Start</h2>
+      <h1>Score</h1>
+      <div class="score">
+        <span class="player-score">0</span>
+        <span class="computer-score">0</span>
+      </div>
+    </div>
+    <div class="game-decoration">
+      <div>
+        <img src="img/player.jpg" alt="Player" class="avatar-player" />
+        <p>You</p>
+      </div>
+      <div>
+        <img src="img/computer.jpg" alt="Compter" class="avatar-computer" />
+        <p>That guy</p>
+      </div>
     </div>
     <div class="choice-container">
       <button data-choice="rock" class="choice">Rock</button>
